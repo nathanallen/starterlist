@@ -8,4 +8,16 @@ class List < ActiveRecord::Base
   def subscribe_owner_to_list
     Subscription.find_or_create_by(list_id: self.id, user_id: self.owner.id)
   end
+
+  def subscriptions
+    Subscription.where(list_id: self.id)
+  end
+
+  def subscribers
+    subscriptions.map{ |s| User.find_by(id: s.user_id) }
+  end
+
+  def emails
+    subscribers.map{ |user| user.email }
+  end
 end
