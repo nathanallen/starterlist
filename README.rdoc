@@ -1,28 +1,10 @@
-== README
+##StarterList
+StarterList is a tool for quickly gathering and distributing email addresses within a group. It allows users to create an on-the-fly custom URL where email addresses can be submitted. Once a predefined threshold is met it email-blasts the entire list *the entire list*.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+###StarterList aims to:
+* Eliminate data entry
+* Reduce 'organizer' bottlenecks
+* Speed up the process of taking a conversation online
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+###Project Goals:
+To TDD a pure JSON API with rails & a mobile-first frontend.
