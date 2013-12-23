@@ -17,4 +17,5 @@ end
 group :development, :test do
   gem 'debugger'
   gem 'rspec-rails', '~> 2.0'
+  gem 'shoulda-matchers'
 end
