@@ -3,4 +3,9 @@ class List < ActiveRecord::Base
   has_many :subscriptions
   has_many :users, through: :subscriptions
   validates_uniqueness_of :url
+  after_create :subscribe_owner_to_list
+
+  def subscribe_owner_to_list
+    Subscription.find_or_create_by(list_id: self.id, user_id: self.owner.id)
+  end
 end
