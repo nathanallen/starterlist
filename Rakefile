@@ -4,3 +4,6 @@
 require File.expand_path('../config/application', __FILE__)
 
 Starterlist::Application.load_tasks
+
+task 'db:reset' => ['db:drop', 'db:create', 'db:migrate']
+task 'db:reseed' => ['db:drop', 'db:create', 'db:migrate', 'db:seed']
