@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+  //$('h1').text(window.location.pathname)
+  $.getJSON("/list" + window.location.pathname +".json", function(response){
+    $('h1').text(response.name)
+  })
+})
