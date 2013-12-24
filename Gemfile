@@ -19,4 +19,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'shoulda-matchers'
   gem 'capybara'
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
 end
