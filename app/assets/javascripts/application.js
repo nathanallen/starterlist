@@ -17,6 +17,8 @@
 
 $(document).ready(function(){
   //$('h1').text(window.location.pathname)
+  var custom_url = window.location.pathname
+  if (!(custom_url == '/'))
   $.getJSON("/list" + window.location.pathname +".json", function(response){
     $('h1').text(response.name)
   })
