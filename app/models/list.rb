@@ -3,6 +3,7 @@ class List < ActiveRecord::Base
   has_many :subscriptions
   has_many :users, through: :subscriptions
   validates_uniqueness_of :url
+  validates_format_of :url, with: /\A[a-zA-Z0-9\_]+\z/, on: :create
   after_create :subscribe_owner_to_list
 
   def subscribe_owner_to_list
