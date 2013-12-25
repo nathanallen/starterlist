@@ -10,7 +10,7 @@ module TestListHelper
   end
 
   def test_list
-    list = List.new(url: Time.now.to_s, owner: test_user)
+    List.new(url: "static", owner: test_user)
   end
 
   def test_user
