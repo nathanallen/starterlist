@@ -12,6 +12,7 @@ Scenario: I can create a new list
   Then I see my list name
   And I see an email input field
 
+@selenium
 Scenario: I can visit a custom url and see list name in title
   When I visit a custom url
   Then I see my list name in the title
