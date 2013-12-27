@@ -9,11 +9,4 @@ describe HomeController do
     end
   end
 
-  # describe "GET ':custom_url'" do
-  #   it "reroutes to index displaying list name" do
-  #     visit '/custom'
-  #     response.should be_success
-  #   end
-  # end
-
 end
