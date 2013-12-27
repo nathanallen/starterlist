@@ -2,12 +2,13 @@ class ListController < ApplicationController
   respond_to :json
   
   #GET /list/new.json
-  def new
-    render json: { list: 'success' }.to_json
-  end
+  # def new
+  #   render json: { list: 'success' }.to_json
+  # end
 
   #POST /list/
   def create
+    p params
     render json: { status: 'posted successfully' }.to_json
   end
 
