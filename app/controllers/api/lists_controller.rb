@@ -14,4 +14,18 @@ class Api::ListsController < Api::BaseController
     end
   end
 
+  def subscribe
+    list_name = params['list_name']
+    list = List.find_by(url: list_name)
+
+    if list
+      email = params['email']
+      user = User.find_or_create_by(email: email)
+      list.subscribe(user)
+      render json: { status: 'success' }.to_json
+    else
+      render json: {"status" => "failed", "error_message" => "List does not exist"}.to_json
+    end
+  end
+
 end

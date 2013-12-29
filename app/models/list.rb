@@ -6,8 +6,12 @@ class List < ActiveRecord::Base
   validates_format_of :url, with: /\A[a-zA-Z0-9\_]+\z/, on: :create
   after_create :subscribe_owner_to_list
 
+  def subscribe(user)
+    Subscription.find_or_create_by(list_id: self.id, user_id: user)
+  end
+
   def subscribe_owner_to_list
-    Subscription.find_or_create_by(list_id: self.id, user_id: self.owner.id)
+    subscribe(self.owner)
   end
 
   def subscriptions
