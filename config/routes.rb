@@ -1,7 +1,8 @@
 Starterlist::Application.routes.draw do
   root to: 'home#index'
 
-  #API
-  post 'lists/create' => 'lists#create'
-  post 'lists/subscribe' => 'lists#subscribe'
+  namespace :api, defaults: {format: :json} do
+    post 'lists/create' => 'lists#create'
+    post 'lists/subscribe' => 'lists#subscribe'
+  end
 end

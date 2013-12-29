@@ -16,3 +16,4 @@
 /tmp
 
 .rspec
+.DS_Store
