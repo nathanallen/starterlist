@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Api::ListsController do
 
   valid_input = {"requested_name" => Time.now.to_i.to_s, "owner_email" => "owner@email.com"}
-  invalid_input = valid_input #list name now exists in database
 
   context "Creating a new list" do
     describe "with an available name" do
@@ -13,9 +12,10 @@ describe Api::ListsController do
       end
     end
 
-    describe "with a taken name" do
+    describe "with a name that's been taken" do
       it "returns an error" do
-        post :create, invalid_input
+        List.create(url: "taken", owner: User.create(email:"e@g.com"))
+        post :create, "requested_name" => "taken", "owner_email" => "owner@email.com"
         response_json.should eq({"status" => "failed", "error_message" => "Name not available"})
       end
     end
