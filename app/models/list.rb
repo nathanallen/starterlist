@@ -7,7 +7,7 @@ class List < ActiveRecord::Base
   after_create :subscribe_owner_to_list
 
   def subscribe(user)
-    Subscription.find_or_create_by(list_id: self.id, user_id: user)
+    Subscription.find_or_create_by(list_id: self.id, user_id: user.id)
   end
 
   def subscribe_owner_to_list
