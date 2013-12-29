@@ -1,10 +1,10 @@
 class Api::ListsController < Api::BaseController
   
   def create
-    owner_email = params['owner_email']
-    owner = User.find_or_create_by(email: owner_email)
+    email = params['email']
+    owner = User.find_or_create_by(email: email)
 
-    requested_name = params['requested_name']
+    requested_name = params['list_name']
     list = List.new(url: requested_name, owner: owner)
 
     if list.save  
