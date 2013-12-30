@@ -24,3 +24,7 @@ group :development, :test do
   gem 'faker'
   gem 'selenium-webdriver'
 end
+
+group :production do
+  gem 'rails_12factor'
+end
