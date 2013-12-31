@@ -1,5 +1,5 @@
 Starterlist::Application.routes.draw do
-  root to: 'home#index'
+  root 'home#index'
 
   namespace :api, defaults: {format: :json} do
     post 'lists/create' => 'lists#create'
