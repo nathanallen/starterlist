@@ -1,36 +1,27 @@
 class ListMailer < ActionMailer::Base
-  default from: "from@example.com"
-
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.list_mailer.creation_confirmation_email.subject
-  #
-  def creation_confirmation_email
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  
+  def creation_confirmation_email(list)
+    @list = list
+    mail( to: list.owner.email,
+          from: list.custom_email, 
+          subject: 'Get started with your new list!'
+    )
   end
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.list_mailer.subscription_confirmation_email.subject
-  #
-  def subscription_confirmation_email
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def subscription_confirmation_email(subscription)
+    @list = subscription.list
+    mail( to: subscription.user.email,
+          from: @list.custom_email, 
+          subject: 'Spread the word!'
+    )
   end
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.list_mailer.email_blast.subject
-  #
-  def email_blast
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def email_blast(list)
+    @list = list
+    mail( to: list.emails,
+          from: list.custom_email, 
+          subject: 'Your email list is ready'
+    )      
   end
+
 end

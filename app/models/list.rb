@@ -25,4 +25,12 @@ class List < ActiveRecord::Base
   def emails
     subscribers.map{ |user| user.email }
   end
+
+  def custom_url
+    "http://starterlist.com/#{self.url}"
+  end
+
+  def custom_email
+    "#{self.url}@starterlist.com"
+  end
 end
