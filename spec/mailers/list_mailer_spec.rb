@@ -3,6 +3,8 @@ require "spec_helper"
 describe ListMailer do
   let(:owner) {User.create!(email: Faker::Internet.email)}
   let(:list) { List.create!(url: Faker::Internet.domain_word, owner: owner)}
+  let(:user) { User.create!(email: Faker::Internet.email) }
+  let!(:subscription) { list.subscribe(user) }
 
   describe "creation_confirmation_email" do
     let(:mail) { ListMailer.creation_confirmation_email(list) }
@@ -18,9 +20,8 @@ describe ListMailer do
     end
   end
 
+
   describe "subscription_confirmation_email" do
-    let(:user) { User.create!(email: Faker::Internet.email) }
-    let(:subscription) { list.subscribe(user) }
     let(:mail) { ListMailer.subscription_confirmation_email(subscription) }
 
     it "renders the headers" do
@@ -47,6 +48,11 @@ describe ListMailer do
       list.emails.each do |email|
         mail.body.encoded.should match(email)
       end
+    end
+
+    it 'sends the email' do
+      mail.deliver!
+      ActionMailer::Base.deliveries.size.should eq(1)
     end
   end
 
