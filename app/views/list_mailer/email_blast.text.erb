@@ -1,3 +1,6 @@
-ListMailer#email_blast
+Thanks for using Starter List!
 
-<%= @greeting %>, find me in app/views/app/views/list_mailer/email_blast.text.erb
+Here's your email list:
+<% @list.emails.each do |email| %>
+  - <%= email %>,
+<% end %>
